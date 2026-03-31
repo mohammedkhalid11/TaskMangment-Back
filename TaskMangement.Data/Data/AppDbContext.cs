@@ -9,6 +9,8 @@ namespace TaskMangement.Data.Data
     {
         public const string DBConnectionString = ConnectionString.TestString;
 
+        public object Genres { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             builder.UseSqlServer(DBConnectionString);

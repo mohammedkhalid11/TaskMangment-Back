@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using TaskMangement.Data.DTOs;
 
 namespace TaskMangement.Data.Models
 {
@@ -11,6 +12,6 @@ namespace TaskMangement.Data.Models
         [Required, MaxLength(50)]
         public string LastName { get; set; } = string.Empty;
 
-        //public List<RefreshToken>? RefreshTokens { get; set; }
+        public List<RefreshToken>? RefreshTokens { get; set; }
     }
 }

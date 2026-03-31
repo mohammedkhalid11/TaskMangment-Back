@@ -1,10 +1,18 @@
+using TaskMangement.API.Extensions;
+using TaskMangement.Data.Configurations;
+using TaskMangement.Service.Configurations;
+using Scalar.AspNetCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Data Layer
+builder.Services.AddProjectDataLayer(builder.Configuration);
 
-builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// Business Layer (Services Layer)
+builder.Services.AddApplicationServices();
+
+// API Layer
+builder.Services.AddApiLayer(builder.Configuration);
 
 var app = builder.Build();
 
@@ -12,12 +20,14 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
+    //app.WebHost.UseUrls("http://0.0.0.0:7072");
 }
 
+app.UseCors("TaskMangementAPI");
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.Run();
