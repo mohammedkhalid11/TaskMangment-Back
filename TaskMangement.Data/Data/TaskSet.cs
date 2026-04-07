@@ -1,8 +1,15 @@
-﻿namespace TaskMangement.Data.Data
+﻿using Microsoft.EntityFrameworkCore;
+using TaskMangement.Data.Models;
+
+namespace TaskMangement.Data.Data
 {
-    public class TaskSet
+    public partial class AppDbContext
     {
-        //public DbSet<Genre> Genres { get; set; }
-        //public DbSet<Moviee> Movies { get; set; }
+        public DbSet<Priority> Priorities { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<ProjectMember> ProjectMembers { get; set; }
+        public DbSet<Models.Task> Tasks { get; set; }
+        public DbSet<TaskAssignment> TaskAssignments { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }

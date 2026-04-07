@@ -2,7 +2,7 @@
 using TaskMangement.Data.DTOs;
 using TaskMangement.Service.IService;
 
-namespace Movie.API.Controllers
+namespace TaskMangement.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
