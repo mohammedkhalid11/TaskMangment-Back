@@ -44,6 +44,13 @@ namespace TaskMangement.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("GetUsers")]
+        public async Task<IActionResult> GetUsers()
+        {
+            var users = await _authService.GetUsersAsync();
+            return Ok(users);
+        }
+
         [HttpGet("RefreshToken")]
         public async Task<IActionResult> RefreshToken()
         {

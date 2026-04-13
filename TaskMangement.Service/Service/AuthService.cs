@@ -112,6 +112,17 @@ namespace TaskMangement.Service.Service
             return authModel;
         }
 
+        public async Task<List<UserDto>> GetUsersAsync()
+        {
+            return await _userManager.Users
+                .Select(u => new UserDto
+                {
+                    Id = u.Id,
+                    Name = u.FirstName + " " + u.LastName
+                })
+                .ToListAsync();
+        }
+
         public async Task<string> AddRoleAsync(AddRoleModel model)
         {
             var user = await _userManager.FindByIdAsync(model.UserId);
