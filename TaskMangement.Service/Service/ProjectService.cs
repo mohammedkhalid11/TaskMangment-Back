@@ -4,7 +4,6 @@ using TaskMangement.Data.Models;
 using TaskMangement.Service.IService;
 
 namespace TaskMangement.Service.Service;
-
 public class ProjectService(AppDbContext context) : IProjectService
 {
     private readonly AppDbContext _context = context;
@@ -33,6 +32,7 @@ public class ProjectService(AppDbContext context) : IProjectService
 
         existingProject.Name = project.Name;
         existingProject.Description = project.Description;
+
         await _context.SaveChangesAsync();
         return existingProject;
     }

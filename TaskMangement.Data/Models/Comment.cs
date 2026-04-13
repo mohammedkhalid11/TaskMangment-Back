@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using TaskMangement.Data.Data;
 
 namespace TaskMangement.Data.Models
 {
