@@ -1,4 +1,5 @@
-﻿using TaskMangement.Data.Models;
+﻿using TaskMangement.Data.DTOs;
+using TaskMangement.Data.Models;
 
 namespace TaskMangement.Service.IService
 {
@@ -8,7 +9,7 @@ namespace TaskMangement.Service.IService
 
         Task<ProjectMember?> GetByIdAsync(long id);
 
-        Task<ProjectMember> CreateAsync(ProjectMember projectMember);
+        Task<ProjectMember> CreateAsync(ProjectMemberDto dto);
 
         Task<ProjectMember?> UpdateAsync(long id, ProjectMember projectMember);
 

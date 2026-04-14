@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TaskMangement.Data.Data;
+using TaskMangement.Data.DTOs;
 using TaskMangement.Data.Models;
 using TaskMangement.Service.IService;
 
@@ -19,11 +20,17 @@ namespace TaskMangement.Service.Service
             return await _context.TaskAssignments.FindAsync(id);
         }
 
-        public async Task<TaskAssignment> CreateAsync(TaskAssignment TaskAssignment)
+        public async Task<TaskAssignment> CreateAsync(TaskAssignmentDto dto)
         {
-            await _context.TaskAssignments.AddAsync(TaskAssignment);
+            var taskAssignment = new TaskAssignment
+            {
+                TaskId = dto.TaskId,
+                UserId = dto.UserId
+            };
+
+            await _context.TaskAssignments.AddAsync(taskAssignment);
             await _context.SaveChangesAsync();
-            return TaskAssignment;
+            return taskAssignment;
         }
 
         public async Task<TaskAssignment?> UpdateAsync(long id, TaskAssignment TaskAssignment)

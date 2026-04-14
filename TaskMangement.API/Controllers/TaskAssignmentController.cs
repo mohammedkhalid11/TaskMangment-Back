@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TaskMangement.Data.DTOs;
 using TaskMangement.Data.Models;
 using TaskMangement.Service.IService;
 
@@ -32,7 +33,7 @@ namespace TaskMangement.API.Controllers
 
         // POST: api/TaskAssignment
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] TaskAssignment taskAssignment)
+        public async Task<IActionResult> Create([FromBody] TaskAssignmentDto taskAssignment)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

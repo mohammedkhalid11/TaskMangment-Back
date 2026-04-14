@@ -17,12 +17,12 @@ builder.Services.AddApiLayer(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
+//{
     app.MapOpenApi();
     app.MapScalarApiReference();
     //app.WebHost.UseUrls("http://0.0.0.0:7072");
-}
+//}
 
 app.UseCors("TaskMangementAPI");
 app.UseHttpsRedirection();

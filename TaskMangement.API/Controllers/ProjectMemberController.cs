@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TaskMangement.Data.DTOs;
 using TaskMangement.Data.Models;
 using TaskMangement.Service.IService;
 
@@ -32,7 +33,7 @@ namespace TaskMangement.API.Controllers
 
         // POST: api/ProjectMember
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] ProjectMember projectMember)
+        public async Task<IActionResult> Create([FromBody] ProjectMemberDto projectMember)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

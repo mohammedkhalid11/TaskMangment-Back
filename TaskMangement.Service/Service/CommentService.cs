@@ -11,37 +11,41 @@ namespace TaskMangement.Service.Service
 
         public async Task<IEnumerable<Comment>> GetAllAsync()
         {
-            return await _context.Comment.ToListAsync();
+            return await _context.Comments.ToListAsync();
         }
 
         public async Task<Comment?> GetByIdAsync(long id)
         {
-            return await _context.Comment.FindAsync(id);
+            return await _context.Comments.FindAsync(id);
         }
 
         public async Task<Comment> CreateAsync(Comment comment)
         {
-            await _context.Comment.AddAsync(comment);
+            comment.Task = null;
+
+            await _context.Comments.AddAsync(comment);
             await _context.SaveChangesAsync();
             return comment;
         }
 
         public async Task<Comment?> UpdateAsync(long id, Comment comment)
         {
-            var existingComment = await _context.Comment.FindAsync(id);
+            var existingComment = await _context.Comments.FindAsync(id);
             if (existingComment == null) return null;
 
             existingComment.Content = comment.Content;
-          
+
+            _context.Comments.Update(existingComment);
             await _context.SaveChangesAsync();
             return existingComment;
         }
+
         public async Task<Comment?> DeleteAsync(long id)
         {
-            var comment = await _context.Comment.FindAsync(id);
+            var comment = await _context.Comments.FindAsync(id);
             if (comment == null) return null;
 
-            _context.Comment.Remove(comment);
+            _context.Comments.Remove(comment);
             await _context.SaveChangesAsync();
             return comment;
         }

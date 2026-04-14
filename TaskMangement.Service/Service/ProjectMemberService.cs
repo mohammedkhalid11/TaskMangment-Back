@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TaskMangement.Data.Data;
+using TaskMangement.Data.DTOs;
 using TaskMangement.Data.Models;
 using TaskMangement.Service.IService;
 
@@ -19,8 +20,14 @@ public class ProjectMemberService(AppDbContext context) : IProjectMemberService
         return await _context.ProjectMembers.FindAsync(id);
     }
 
-    public async Task<ProjectMember> CreateAsync(ProjectMember projectMember)
+    public async Task<ProjectMember> CreateAsync(ProjectMemberDto dto)
     {
+        var projectMember = new ProjectMember
+        {
+            ProjectId = dto.ProjectId,
+            UserId = dto.UserId
+        };
+
         await _context.ProjectMembers.AddAsync(projectMember);
         await _context.SaveChangesAsync();
         return projectMember;
