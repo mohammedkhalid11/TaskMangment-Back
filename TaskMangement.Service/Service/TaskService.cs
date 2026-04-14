@@ -20,6 +20,9 @@ namespace TaskMangement.Service.Service
 
         public async Task<Data.Models.Task> CreateAsync(Data.Models.Task task)
         {
+            task.Priority = null;
+            task.Project = null;
+            
             await _context.Tasks.AddAsync(task);
             await _context.SaveChangesAsync();
             return task;

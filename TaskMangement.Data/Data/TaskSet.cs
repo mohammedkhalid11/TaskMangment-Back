@@ -10,6 +10,6 @@ namespace TaskMangement.Data.Data
         public DbSet<ProjectMember> ProjectMembers { get; set; }
         public DbSet<Models.Task> Tasks { get; set; }
         public DbSet<TaskAssignment> TaskAssignments { get; set; }
-        public DbSet<Comment> Comment { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }
